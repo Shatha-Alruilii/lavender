@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>إنشاء حساب | لافندر</title>
+  <style>
+:root {
+  --ivory: #fffaf6;
+  --lavender: #eee3f8;
+  --pink: #f7dfe8;
+  --plum: #4b285c;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ivory); color: var(--plum); font: 16px/1.75 Tahoma, Arial, sans-serif; }
+h1, h2, h3 { font-family: "Noto Naskh Arabic", "Traditional Arabic", Georgia, serif; line-height: 1.3; margin: 0 0 12px; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.4rem; }
+p { margin: 0 0 10px; }
+a { color: inherit; }
+.wrap { width: min(1100px, 92%); margin-inline: auto; }
+.site-header, footer { background: var(--lavender); padding: 18px 0; }
+.bar, nav { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; }
+.bar { justify-content: space-between; }
+.brand { font-size: 1.4rem; font-weight: bold; text-decoration: none; }
+nav a { padding: 5px 10px; border-radius: 8px; text-decoration: none; }
+nav a:hover, nav a[aria-current="page"] { background: var(--pink); }
+.hero, .custom { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+.hero { background: var(--pink); border-radius: 20px; overflow: hidden; margin-top: 24px; }
+.hero div { padding: 32px; }
+.hero img, .card img, .examples img { display: block; width: 100%; object-fit: cover; }
+.hero img { height: clamp(260px, 34vw, 420px); }
+.sections { justify-content: center; background: var(--lavender); padding: 8px; border-radius: 12px; margin-bottom: 32px; }
+main section { margin-bottom: 32px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; }
+.card { border: 2px solid var(--lavender); border-radius: 14px; overflow: hidden; }
+.card img { height: 208px; }
+.card div { padding: 14px 16px; }
+.card h3, .card p {
+  font-family: Arial, Tahoma, sans-serif;
+}
+.card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.card p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.examples { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.examples img { height: 105px; border-radius: 8px; }
+.panel { padding: 26px; background: var(--lavender); border-radius: 16px; }
+label { display: block; margin-top: 10px; font-weight: bold; }
+input, select, textarea { display: block; width: 100%; padding: 8px 10px; border: 1px solid var(--plum); border-radius: 8px; background: var(--ivory); color: var(--plum); font: inherit; }
+.button { display: inline-block; margin: 14px 0 8px; padding: 8px 18px; background: var(--plum); color: var(--ivory); border: 0; border-radius: 8px; font: inherit; text-decoration: none; cursor: pointer; }
+.button:hover { text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--plum); outline-offset: 3px; }
+.result { overflow-wrap: anywhere; }
+.result:empty { display: none; }
+.auth { min-height: 75vh; display: grid; place-items: center; padding: 32px 16px; }
+.auth-card { width: min(100%, 440px); margin: 0; }
+.auth-card h1 { font-size: 2.3rem; }
+footer { text-align: center; }
+footer p:last-child { margin: 8px 0 0; }
+@media (max-width: 650px) {
+  .hero, .custom { grid-template-columns: 1fr; }
+  .hero { gap: 0; }
+}
+
+/* تحسين توزيع البطاقات وقسم التواصل */
+.site-header { border-bottom: 1px solid #decde9; }
+.brand { letter-spacing: .5px; }
+.hero { box-shadow: 0 12px 35px #4b285c12; }
+.hero h1 { font-family: Arial, Tahoma, sans-serif; font-size: clamp(2rem, 4vw, 3.3rem); }
+.card { background: #fffaf6; box-shadow: 0 5px 20px #4b285c09; transition: transform .2s; }
+.card:hover { transform: translateY(-4px); }
+.card img { height: 250px; }
+.card h3 { margin-bottom: 8px; }
+.price { display: block; margin-top: 8px; font-weight: bold; font-size: 1.1rem; }
+.contact-section { background: #eee3f8; padding: 38px 0; }
+.contact-section h2, .contact-section > .wrap > p { text-align: center; }
+.contact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.contact-card { background: #fffaf6; border: 1px solid #decde9; border-radius: 14px; padding: 23px 12px; text-align: center; }
+.contact-card h3 { font-family: Arial, Tahoma, sans-serif; font-size: 1.1rem; }
+.contact-card span { display: block; font-size: 1.6rem; margin-bottom: 10px; }
+.contact-card p { font-size: .9rem; margin: 0; overflow-wrap: anywhere; }
+footer { padding: 18px; }
+@media (max-width: 650px) { .contact-grid { grid-template-columns: 1fr; } }
+
+</style>
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="index.html">🌷 Lavender</a>
+      <nav aria-label="صفحات الموقع"><a href="index.html">الرئيسية</a><a href="login.html">تسجيل الدخول</a><a href="register.html" aria-current="page">إنشاء حساب</a></nav>
+    </div>
+  </header>
+  <main class="auth">
+    <section class="panel auth-card">
+      <h1>إنشاء حساب</h1>
+      <p>استخدمي بيانات تجريبية لتجربة النموذج</p>
+      <form class="demo-form" method="post" data-message="تم التحقق من الحقول في نموذج إنشاء الحساب التجريبي.">
+        <label for="full-name">الاسم</label>
+        <input id="full-name" type="text" autocomplete="name" required>
+        <label for="email">البريد الإلكتروني</label>
+        <input id="email" dir="ltr" type="email" autocomplete="email" required>
+        <label for="password">كلمة المرور (6 أحرف على الأقل)</label>
+        <input id="password" type="password" autocomplete="new-password" minlength="6" required>
+        <button class="button" type="submit">إنشاء حساب</button>
+        <p class="result" role="status"></p>
+      </form>
+      <p>لديك حساب؟ <a href="login.html">سجّلي الدخول</a></p>
+    </section>
+  </main>
+  <footer id="contact">
+
+    <p>© 2026 لافندر · لأن لكل لحظة وردة</p>
+  </footer>
+<script>
+const bouquetForm = document.querySelector("#bouquet-form");
+if (bouquetForm) {
+  bouquetForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const flower = document.querySelector("#flower").value;
+    const color = document.querySelector("#color").value;
+    const wrap = document.querySelector("#wrap").value;
+    const note = document.querySelector("#note").value.trim();
+    let summary = `باقتك: ورد ${flower} بلون ${color}، والتغليف ${wrap}`;
+    if (note) {
+      summary += ` رسالة الإهداء: ${note}`;
+    }
+    bouquetForm.querySelector(".result").textContent = summary;
+  });
+}
+
+const demoForm = document.querySelector(".demo-form");
+if (demoForm) {
+  demoForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    demoForm.querySelector(".result").textContent = demoForm.dataset.message;
+  });
+}
+
+</script>
+</body>
+</html>
